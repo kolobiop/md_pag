@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mi Empresa - Soluciones Profesionales</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+    <style>
+       *{ margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  /* escalas base: podrás afinarlas si lo deseas */
+  --hero-pad-desktop: 100px;
+  --hero-pad-mobile: 72px;
+  --radius: 12px;
+}
+
+/* tipografía general */
+body{
+  font-family:'Poppins', sans-serif;
+  color:#333;
+  line-height:1.6;
+  -webkit-text-size-adjust:100%; /* evita zoom raro en ios */
+}
+
+/* navbar (semi-transparente) */
+.navbar{
+  background: rgba(30,58,95,.6);
+  backdrop-filter: blur(4px);
+  padding: .85rem 0;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+.navbar-brand{
+  font-weight:700;
+  font-size:1.5rem;
+  color:#fff !important;
+  letter-spacing:1px;
+}
+.logo-img{ height:50px; width:auto; }
+
+/* hero con imagen de fondo */
+.hero{
+  position:relative;
+  color:#fff;
+  padding: var(--hero-pad-desktop) 0 calc(var(--hero-pad-desktop) + 20px) 0;
+  text-align:center;
+  overflow:hidden;
+
+  background-image: url('https://masterdrilling.com/wp-content/uploads/2024/07/gallery-2.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45));
+  pointer-events:none;
+}
+.hero::before{ content:none; }
+
+.hero h1{
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight:700;
+  margin-bottom: .85rem;
+  margin-top:40px;
+  animation: fadeInDown 1s;
+  position:relative;
+  z-index:1;
+}
+.hero p{
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  margin-bottom:1.25rem;
+  animation: fadeInUp 1s;
+  position:relative;
+  z-index:1;
+}
+.btn-custom{
+  background:#fff;
+  color:#2B4C7E;
+  padding:12px 32px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  transition:all .3s;
+  box-shadow:0 4px 15px rgba(0,0,0,.2);
+  position:relative;
+  z-index:1;
+  font-size:1rem;
+}
+.btn-custom:hover{
+  transform: translateY(-3px);
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+  color:#2B4C7E;
+  background:#f0f0f0;
+}
+
+/* about */
+.about{ padding:80px 0; background:#f8f9fa; }
+.section-title{ text-align:center; margin-bottom:40px; }
+.section-title h2{
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight:700; color:#333;
+  position:relative; display:inline-block; padding-bottom:12px;
+}
+.section-title h2::after{
+  content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:80px; height:4px;
+  background: linear-gradient(135deg, #2B4C7E 0%, #1e3a5f 100%);
+  border-radius:2px;
+}
+
+/* gallery */
+.gallery{ padding:64px 0; }
+.gallery-item{
+  position:relative; overflow:hidden; border-radius: var(--radius); margin-bottom:24px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  transition: transform .3s;
+}
+.gallery-item:hover{ transform: translateY(-8px); box-shadow:0 10px 25px rgba(0,0,0,.2); }
+.gallery-item img{
+  width:100%; height:300px; object-fit:cover; display:block;
+  /* mejora carga en móviles si editas el html y agregas loading="lazy" */
+}
+
+/* social */
+.social-section{
+  background: linear-gradient(135deg, #2B4C7E 0%, #1e3a5f 100%);
+  padding:60px 0; text-align:center; color:#fff;
+}
+.social-section h2{ font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom:24px; font-weight:600; }
+.social-links{
+  display:flex; justify-content:center; gap:16px 20px; flex-wrap:wrap;
+}
+.social-link{
+  width:60px; height:60px; background:rgba(255,255,255,.2);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:1.5rem; transition:all .3s; text-decoration:none;
+  touch-action: manipulation; /* mejor respuesta táctil */
+}
+.social-link:hover{ background:#fff; color:#2B4C7E; transform: translateY(-5px) scale(1.05); }
+
+/* footer */
+footer{ background:#2c3e50; color:#fff; text-align:center; padding:28px 0; }
+footer p{ margin:0; }
+
+/* animaciones */
+@keyframes fadeInDown{
+  from{ opacity:0; transform: translateY(-30px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+@keyframes fadeInUp{
+  from{ opacity:0; transform: translateY(30px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* ========== breakpoints ========== */
+
+/* ≤ 992px (tablets en landscape / laptops pequeños) */
+@media (max-width: 992px){
+  .hero{ padding: 84px 0 96px 0; background-position:center 35%; }
+  .btn-custom{ padding:12px 28px; }
+  .gallery-item img{ height:260px; }
+}
+
+/* ≤ 768px (tablets y la mayoría de teléfonos grandes) */
+@media (max-width: 768px){
+  .navbar{ padding: .7rem 0; }
+  .logo-img{ height:44px; }
+
+  .hero{
+    padding: var(--hero-pad-mobile) 0 calc(var(--hero-pad-mobile) + 12px) 0;
+    background-position:center 30%;
+  }
+  .hero h1{ margin-top:20px; }
+  .btn-custom{
+    padding:11px 26px;
+    font-size:.95rem;
+  }
+
+  .about{ padding:56px 0; }
+  .section-title{ margin-bottom:28px; }
+
+  .gallery{ padding:52px 0; }
+  .gallery-item img{ height:220px; }
+
+  .social-section{ padding:48px 0; }
+  .social-link{
+    width:56px; height:56px; font-size:1.35rem;
+  }
+
+  footer{ padding:24px 0; }
+}
+
+/* ≤ 576px (teléfonos) */
+@media (max-width: 576px){
+  .container{ padding-left: 18px; padding-right: 18px; }
+
+  .hero{
+    padding: 64px 0 76px 0;
+    background-position:center 28%;
+  }
+  .hero h1{ font-size: clamp(1.6rem, 7vw, 2rem); }
+  .hero p{ font-size: .98rem; max-width: 36ch; margin-left:auto; margin-right:auto; }
+  .btn-custom{ padding:10px 22px; border-radius:40px; }
+
+  .about .row{ row-gap: 18px; }
+  .about .img-fluid{ border-radius: var(--radius); }
+
+  .gallery-item{ margin-bottom:18px; }
+  .gallery-item img{ height: 200px; }
+
+  .social-links{ gap:14px 16px; }
+  .social-link{ width:52px; height:52px; font-size:1.25rem; }
+}
+
+/* ≤ 380px (teléfonos pequeños) */
+@media (max-width: 380px){
+  .hero{ padding: 56px 0 68px 0; }
+  .hero h1{ font-size:1.45rem; }
+  .hero p{ font-size:.92rem; }
+  .btn-custom{ padding:9px 18px; font-size:.9rem; }
+
+  .gallery-item img{ height:180px; }
+}
+
+    </style>
+</head>
+<body>
+
+   
+
+    <!-- hero -->
+    <section class="hero">
+        <div class="container position-relative">
+            <h1>Soluciones Profesionales</h1>
+            <p>Innovación, Calidad y Compromiso con tu Éxito</p>
+            <a href="#about" class="btn-custom">Conocer Más</a>
+        </div>
+    </section>
+
+    <!-- about -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>VISIÓN GENERAL DEL PACK ELÉTRICO </h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="https://media.istockphoto.com/id/2166685594/es/foto/electricity-and-electrical-maintenance-service-electrical-tests-industrial-electrical-circuits.jpg?s=612x612&w=0&k=20&c=0NvyKiIBksZJmpyc1bIHnsU-rIQY7SlLC--3O3C88MU=" alt="Oficina" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mb-4">Líderes en Innovación Minera</h3>
+                    <p class="lead">
+                    Este dossier documenta el diseño, fabricación, pruebas y puesta en servicio del pack eléctrico 
+                    para raise boring. Consolida planos, listados, cálculos, fichas técnicas, procedimientos y 
+                    trazabilidad de componentes críticos, garantizando seguridad, confiabilidad y mantenibilidad en operación.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- gallery -->
+    <section class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://masterdrilling.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-11-01-at-13.57.59-1.jpeg" alt="Proyecto 1">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://portal.minder.pe/wp-content/uploads/2023/08/3-3.jpg" alt="Proyecto 2">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://actualidadminera.com/wp-content/uploads/2024/06/38670950_228497107856880_8661821860519870464_n-e1717655596883.jpg" alt="Proyecto 3">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://masterdrilling.com/wp-content/uploads/2024/07/gallery-1-1.jpeg" alt="Proyecto 4">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://masterdrilling.com/wp-content/uploads/2024/07/gallery-2.jpg" alt="Proyecto 5">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="https://masterdrilling.com/wp-content/uploads/2024/08/0b258a3d79bda0823999e50a79c71e92-683x1024.webp" alt="Proyecto 6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- social -->
+    <section class="social-section">
+        <div class="container">
+            <h2>Síguenos en Redes Sociales</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/168CCWXV19/?mibextid=wwXIfr" target="_blank" class="social-link" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/masterdrillinggroup?igsh=YWo1N3MxcmhnNzJj" target="_blank" class="social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A89317053&keywords=master%20drilling%20per%C3%BA&origin=RICH_QUERY_SUGGESTION&position=0&searchId=cdb8b8a8-1a7b-4c81-8dc8-466b2edfa6b9&sid=%40kD&spellCorrectionEnabled=false" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/watch?v=jh8x4zqsaYQ&t=220s" target="_blank" class="social-link" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:RecursosHumanosPeru@masterdrilling.com" class="social-link" aria-label="Enviar correo a Recursos Humanos">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/51944826711" target="_blank" class="social-link" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://maps.app.goo.gl/hr8Vm33bkVYubKyUA" target="_blank" class="social-link" title="Ubicación">
+                    <i class="fa-solid fa-location-dot"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Master Drilling | Dharshan OP </p>
+           
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
