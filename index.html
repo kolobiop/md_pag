@@ -18,7 +18,6 @@
        *{ margin:0; padding:0; box-sizing:border-box; }
 
 :root{
-  /* escalas base: podrás afinarlas si lo deseas */
   --hero-pad-desktop: 100px;
   --hero-pad-mobile: 72px;
   --radius: 12px;
@@ -29,10 +28,10 @@ body{
   font-family:'Poppins', sans-serif;
   color:#333;
   line-height:1.6;
-  -webkit-text-size-adjust:100%; /* evita zoom raro en ios */
+  -webkit-text-size-adjust:100%;
 }
 
-/* navbar (semi-transparente) */
+/* navbar (si la usas luego) */
 .navbar{
   background: rgba(30,58,95,.6);
   backdrop-filter: blur(4px);
@@ -121,6 +120,40 @@ body{
   border-radius:2px;
 }
 
+/* ====== sección pdf ====== */
+.pdf-section{
+  padding:64px 0;
+  background:#ffffff;
+}
+.pdf-section p{
+  margin-bottom:1rem;
+}
+.pdf-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:8px;
+  align-items:center; /* nuevo: centra verticalmente el texto respecto al botón */
+}
+
+.btn-download{
+  border-radius:50px;
+  font-weight:600;
+}
+.pdf-thumbnail{
+  width:100%;
+  max-width:500px;
+  border-radius:var(--radius);
+  box-shadow:0 5px 15px rgba(0,0,0,.15);
+  border:1px solid #dee2e6;
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.pdf-thumbnail:hover{
+  transform: translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
 /* gallery */
 .gallery{ padding:64px 0; }
 .gallery-item{
@@ -131,7 +164,6 @@ body{
 .gallery-item:hover{ transform: translateY(-8px); box-shadow:0 10px 25px rgba(0,0,0,.2); }
 .gallery-item img{
   width:100%; height:300px; object-fit:cover; display:block;
-  /* mejora carga en móviles si editas el html y agregas loading="lazy" */
 }
 
 /* social */
@@ -147,7 +179,7 @@ body{
   width:60px; height:60px; background:rgba(255,255,255,.2);
   border-radius:50%; display:flex; align-items:center; justify-content:center;
   color:#fff; font-size:1.5rem; transition:all .3s; text-decoration:none;
-  touch-action: manipulation; /* mejor respuesta táctil */
+  touch-action: manipulation;
 }
 .social-link:hover{ background:#fff; color:#2B4C7E; transform: translateY(-5px) scale(1.05); }
 
@@ -165,16 +197,13 @@ footer p{ margin:0; }
   to{ opacity:1; transform: translateY(0); }
 }
 
-/* ========== breakpoints ========== */
-
-/* ≤ 992px (tablets en landscape / laptops pequeños) */
+/* breakpoints */
 @media (max-width: 992px){
   .hero{ padding: 84px 0 96px 0; background-position:center 35%; }
   .btn-custom{ padding:12px 28px; }
   .gallery-item img{ height:260px; }
 }
 
-/* ≤ 768px (tablets y la mayoría de teléfonos grandes) */
 @media (max-width: 768px){
   .navbar{ padding: .7rem 0; }
   .logo-img{ height:44px; }
@@ -203,7 +232,6 @@ footer p{ margin:0; }
   footer{ padding:24px 0; }
 }
 
-/* ≤ 576px (teléfonos) */
 @media (max-width: 576px){
   .container{ padding-left: 18px; padding-right: 18px; }
 
@@ -225,7 +253,6 @@ footer p{ margin:0; }
   .social-link{ width:52px; height:52px; font-size:1.25rem; }
 }
 
-/* ≤ 380px (teléfonos pequeños) */
 @media (max-width: 380px){
   .hero{ padding: 56px 0 68px 0; }
   .hero h1{ font-size:1.45rem; }
@@ -234,12 +261,9 @@ footer p{ margin:0; }
 
   .gallery-item img{ height:180px; }
 }
-
     </style>
 </head>
 <body>
-
-   
 
     <!-- hero -->
     <section class="hero">
@@ -254,7 +278,7 @@ footer p{ margin:0; }
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>VISIÓN GENERAL DEL PACK ELÉCTRICO </h2>
+                <h2>VISIÓN GENERAL DEL PACK ELÉTRICO </h2>
             </div>
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -263,10 +287,55 @@ footer p{ margin:0; }
                 <div class="col-md-6">
                     <h3 class="mb-4">Líderes en Innovación Minera</h3>
                     <p class="lead">
-                    Este dossier documenta el diseño, fabricación, pruebas y puesta en servicio del pack eléctrico 
-                    para raise boring. Consolida planos, listados, cálculos, fichas técnicas, procedimientos y 
+                    este dossier documenta el diseño, fabricación, pruebas y puesta en servicio del pack eléctrico 
+                    para raise boring. consolida planos, listados, cálculos, fichas técnicas, procedimientos y 
                     trazabilidad de componentes críticos, garantizando seguridad, confiabilidad y mantenibilidad en operación.</p>
-                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- pdf preview + descarga -->
+    <section class="pdf-section" id="dossier">
+        <div class="container">
+            <div class="section-title">
+                <h2>DOSSIER TÉCNICO PACK ELÉCTRICO</h2>
+            </div>
+            <div class="row align-items-start g-4">
+                <div class="col-lg-5">
+                    <h3 class="h5 mb-3">Previsualiza y descarga el dossier</h3>
+                    <p>
+                        Aquí puedes revisar el dossier completo del pack eléctrico para raise boring.
+                        Incluye planos, listas de materiales, fichas técnicas, diagramas y procedimientos
+                        de montaje y mantenimiento.
+                    </p>
+                    <div class="pdf-actions">
+                        <!-- enlace a la carpeta de drive -->
+                        <a href="https://drive.google.com/file/d/10A1Zcci-Vhn1qVyG-H5m8AzyZI2L1uor/view?usp=sharing" 
+                           class="btn btn-primary btn-download" 
+                           target="_blank" rel="noopener">
+                            <i class="fa-solid fa-download me-2"></i>
+                            Download
+                        </a>
+                        <span style="font-weight:600;">
+                          RD3 - 250
+                      </span>
+                    </div>
+                    <p class="text-muted mt-3 mb-0" style="font-size:.9rem;">
+                        Al abrir el enlace podrás descargar el pdf directamente desde google drive.
+                    </p>
+                </div>
+                <div class="col-lg-7 text-center">
+                    <!-- “foto” del pdf que lleva al enlace de descarga -->
+                    <a href="https://drive.google.com/file/d/10A1Zcci-Vhn1qVyG-H5m8AzyZI2L1uor/view?usp=sharing"
+                       target="_blank" rel="noopener">
+                        <img src="https://solidservicios.com/wp-content/uploads/vlcsnap-2018-12-19-17h34m12s638.png"
+                             alt="vista previa dossier pack eléctrico"
+                             class="pdf-thumbnail">
+                    </a>
+                    <p class="mt-2 mb-0 text-muted" style="font-size:.85rem;">
+                        Haz clic sobre la imagen para abrir el dossier.
+                    </p>
                 </div>
             </div>
         </div>
@@ -276,7 +345,7 @@ footer p{ margin:0; }
     <section class="gallery">
         <div class="container">
             <div class="section-title">
-                <h2>Galería</h2>
+                <h2>GALERÍA</h2>
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -316,7 +385,7 @@ footer p{ margin:0; }
     <!-- social -->
     <section class="social-section">
         <div class="container">
-            <h2>Síguenos en Redes Sociales</h2>
+            <h2>SÍGUENOS EN NUESTRAS REDES SOCIALES</h2>
             <div class="social-links">
                 <a href="https://www.facebook.com/share/168CCWXV19/?mibextid=wwXIfr" target="_blank" class="social-link" title="Facebook">
                     <i class="fab fa-facebook-f"></i>
@@ -346,8 +415,7 @@ footer p{ margin:0; }
     <!-- footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Master Drilling | Dharshan OP </p>
-           
+            <p>&copy; 2025 Master Drilling | DHARSHAN ORPA </p>
         </div>
     </footer>
 
@@ -355,3 +423,4 @@ footer p{ margin:0; }
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
