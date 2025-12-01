@@ -295,51 +295,79 @@ footer p{ margin:0; }
         </div>
     </section>
 
-    <!-- pdf preview + descarga -->
-    <section class="pdf-section" id="dossier">
-        <div class="container">
-            <div class="section-title">
-                <h2>DOSSIER TÉCNICO PACK ELÉCTRICO</h2>
-            </div>
-            <div class="row align-items-start g-4">
-                <div class="col-lg-5">
-                    <h3 class="h5 mb-3">Previsualiza y descarga el dossier</h3>
-                    <p>
-                        Aquí puedes revisar el dossier completo del pack eléctrico para raise boring.
-                        Incluye planos, listas de materiales, fichas técnicas, diagramas y procedimientos
-                        de montaje y mantenimiento.
-                    </p>
-                    <div class="pdf-actions">
-                        <!-- enlace a la carpeta de drive -->
-                        <a href="https://drive.google.com/file/d/10A1Zcci-Vhn1qVyG-H5m8AzyZI2L1uor/view?usp=sharing" 
-                           class="btn btn-primary btn-download" 
-                           target="_blank" rel="noopener">
-                            <i class="fa-solid fa-download me-2"></i>
-                            Download
-                        </a>
-                        <span style="font-weight:600;">
-                          RD3 - 250
-                      </span>
+  <!-- pdf preview + descarga -->
+<section class="pdf-section" id="dossier">
+    <div class="container">
+        <div class="section-title">
+            <h2>DOSSIER TÉCNICO PACK ELÉCTRICO</h2>
+        </div>
+
+        <div class="row align-items-start g-4">
+            <!-- columna izquierda: texto + descargas -->
+            <div class="col-lg-5">
+                <h3 class="h5 mb-3">Previsualiza y descarga el dossier</h3>
+                <p>
+                    Aquí puedes revisar el dossier completo del pack eléctrico para raise boring.
+                    Incluye planos, listas de materiales, fichas técnicas, diagramas y procedimientos
+                    de montaje y mantenimiento.
+                </p>
+
+                <!-- botones de descarga -->
+                <div class="pdf-actions">
+                    <div class="row gy-2">
+
+                        <!-- fila 1: rd3 - 250 -->
+                        <div class="col-12 d-flex align-items-center">
+                            <a href="https://drive.google.com/file/d/10A1Zcci-Vhn1qVyG-H5m8AzyZI2L1uor/view?usp=sharing" 
+                               class="btn btn-primary btn-download me-3"
+                               target="_blank" rel="noopener">
+                                <i class="fa-solid fa-download me-2"></i>
+                                download
+                            </a>
+                            <span class="fw-semibold mb-0">
+                                rd3 - 250
+                            </span>
+                        </div>
+
+                        <!-- fila 2: shotcrete_robot -->
+                        <div class="col-12 d-flex align-items-center">
+                            <a href="https://masterdrilling.sharepoint.com/:b:/r/Per%20Documentos%20Ingeniera/Ingenier%C3%ADa/01.%20ADMINISTRACI%C3%93N/02.%20MANTENIMIENTO/03.%20Capacitaci%C3%B3n%20Pack%20DC/MOMENTANEOS/1-SHOTCRETE_ROBOT.pdf?csf=1&web=1&e=JxCE43"
+                               class="btn btn-primary btn-download me-3"
+                               target="_blank" rel="noopener">
+                                <i class="fa-solid fa-download me-2"></i>
+                                download
+                            </a>
+                            <span class="fw-semibold mb-0">
+                                shotcrete_robot
+                            </span>
+                        </div>
+
                     </div>
-                    <p class="text-muted mt-3 mb-0" style="font-size:.9rem;">
-                        Al abrir el enlace podrás descargar el pdf directamente desde google drive.
-                    </p>
                 </div>
-                <div class="col-lg-7 text-center">
-                    <!-- “foto” del pdf que lleva al enlace de descarga -->
-                    <a href="https://drive.google.com/file/d/10A1Zcci-Vhn1qVyG-H5m8AzyZI2L1uor/view?usp=sharing"
-                       target="_blank" rel="noopener">
-                        <img src="https://solidservicios.com/wp-content/uploads/vlcsnap-2018-12-19-17h34m12s638.png"
-                             alt="vista previa dossier pack eléctrico"
-                             class="pdf-thumbnail">
-                    </a>
-                    <p class="mt-2 mb-0 text-muted" style="font-size:.85rem;">
-                        Haz clic sobre la imagen para abrir el dossier.
-                    </p>
-                </div>
+
+                <p class="text-muted mt-3 mb-0" style="font-size:.9rem;">
+                    Al abrir el enlace podrás descargar el pdf directamente desde google drive.
+                </p>
+            </div>
+
+            <!-- columna derecha: imagen -->
+            <div class="col-lg-7 text-center">
+                <a href="https://drive.google.com/file/d/10A1Zcci-Vhn1qVyG-H5m8AzyZI2L1uor/view?usp=sharing"
+                   target="_blank" rel="noopener">
+                    <img src="https://solidservicios.com/wp-content/uploads/vlcsnap-2018-12-19-17h34m12s638.png"
+                         alt="vista previa dossier pack eléctrico"
+                         class="pdf-thumbnail">
+                </a>
+                <p class="mt-2 mb-0 text-muted" style="font-size:.85rem;">
+                    Haz clic sobre la imagen para abrir el dossier.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+
 
     <!-- gallery -->
     <section class="gallery">
@@ -423,4 +451,3 @@ footer p{ margin:0; }
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
